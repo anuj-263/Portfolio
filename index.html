@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #121212;
+            color: #E0E0E0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #E0E0E0;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hero-image {
+            width: 150px;
+            /* Adjust size as needed */
+            height: 150px;
+            border-radius: 50%;
+            /* Makes the image a circle */
+            object-fit: cover;
+            /* Ensures the image fills the space without distortion */
+            border: 3px solid #0d9488;
+            /* Adds a nice border */
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        ul li {
+            background-color: #1a1a1a;
+            padding: 0.75rem 1rem;
+            border-radius: 0.25rem;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background-color: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #2a2a2a;
+            color: #E0E0E0;
+            border: 1px solid #333;
+            border-radius: 0.25rem;
+        }
+
+        button {
+            background-color: #0d9488;
+            color: #ffffff;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        /* Hobbies / Interests Section */
+.hobbies-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.hobby-card {
+    background-color: #1a1a1a;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    width: 280px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hobby-card h3 {
+    color: #0d9488;
+    margin-bottom: 0.5rem;
+}
+
+.hobby-card p {
+    color: #E0E0E0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.hobby-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+
+        footer {
+            background-color: #1a1a1a;
+            padding: 1rem 0;
+            text-align: center;
+            color: #666;
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+            /* Change background on hover */
+            color: #007bff;
+            /* Change text color on hover */
+            transform: scale(1.05);
+            /* Slight zoom effect */
+        }
+
+        h2:hover,
+        a:hover {
+            background-color: grey;
+            /* Highlights text */
+            transition: background-color 0.3s;
+        }
+        .signature-img {
+    width: 180px;       /* Adjust as needed */
+    height: auto;
+    margin-top: 0.5rem;
+    display: block;
+    
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#education">Education </a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience </a>
+            <a href="#hobbies">Hobbies & Interests</a>
+            <a href="#declaration">Decleration</a>
+            <a href="#social">Connect With Me</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <div class="hero-content">
+                <img src="Photo1.png" alt="A photo of the student developer" class="hero-image">
+                <div class="text-center">
+                    <h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Hello, I'm A Student
+                        Developer.</h1>
+                    <p style="font-size: 1.125rem;">Welcome to my basic portfolio.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="text-center">
+                <p style="margin-top: 1rem;">
+                    I am a first-year Electronics and Communication Engineering student at Future Institute of
+                    Engineering and Management (FIEM), Kolkata, driven by a strong passion for technology, web
+                    development, and creative innovation. With a foundation in HTML, CSS, JavaScript, and C programming,
+                    I thrive on building practical projects that bridge academic knowledge with real-world application.
+
+                    Currently, I am an active community member of Google Developer Group on Campus (FIEM), where I
+                    engage in workshops and collaborative opportunities to expand my technical and leadership skills. My
+                    journey includes the successful development of a responsive Amazon Home Page UI clone using HTML and
+                    CSS, focusing on pixel-perfect alignment, consistency, and responsive design best practices. I am
+                    always seeking to deepen my expertise by exploring frontend development, UI/UX fundamentals, and
+                    broader electronics concepts, alongside contributing to community-driven tech initiatives.
+
+                    Education has been the cornerstone of my growth, with a solid science background at Shree Maheshwari
+                    Vidyalaya and a distinction in artistic pursuits from Sarbabharatiya Sangeet-O-Sanskriti Parishad.
+                    My portfolio showcases my commitment to continuous learning and innovation, whether through solo
+                    projects or collaborative tech communities. I am enthusiastic about connecting with fellow
+                    developers, participating in open-source initiatives, and making a positive impact through
+                    technology.
+
+                    Let’s build, innovate, and inspire together as we shape solutions for tomorrow!
+                </p>
+            </div>
+        </section>
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="text-center">
+                <p><b>PRIMARY EDUCATION :- </b> S.S PUBLIC SCHOOL <BR></p>
+                <p><b>SECONDARY EDUCATION :- </b> SHREE JAIN VIDYALAYA <BR>
+                    I have successfully completed my Secondary Education under the West Bengal Board of Secondary
+                    Education
+                    (WBBSE) from Shree Jain Vidyalaya</p>
+                <p><b>HIGHER SECONDARY EDUCATION :- </b> SHREE MAHESHWARI VIDYALAYA <BR>
+                    Successfully completed Higher Secondary Education (Class XII) under WBCHSE, building a strong
+                    academic
+                    foundation in Science. This achievement has prepared me to pursue higher studies and further
+                    professional growth</p>
+                <P> <b>Bachelor of Technology :-</b>Future Institute Of Engineering and Management <br>I am presently
+                    pursuing my Bachelor of Technology (B.Tech) in Electronics and Communication Engineering (ECE) at
+                    Future
+                    Institute of Engineering and Management (FIEM), Kolkata, as a first-year student.</P>
+        </section>
+        <section id="skills">
+            <h2 class="section-title">My Skills</h2>
+            <div class="text-center">
+                <ul>
+                    <li>Flex Box & Grid</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>C Programming</li>
+                    <li>C++</li>
+                    <li>Object-Oriented Programming</li>
+                </ul>
+            </div>
+        </section>
+        <section id="experience">
+            <h2 class="section-title">Expirience </h2>
+            <div class="text-center">
+                <p><b>Title:-</b> Community Member </p>
+                <p><b>
+                        Company or organization:- </b> Google Developer Group on Campus Future Institute of Engineering
+                    and Management </p>
+                <i>
+                    Joined Google Developer Groups (GDG) on Campus – FIEM as a community member. Engaging in events,
+                    workshops, and collaborations to learn, share, and grow as an aspiring developer while connecting
+                    with peers and industry experts.
+                </i>
+               
+<section id="hobbies">
+    <h2 class="section-title">🎯 Hobbies & Interests</h2>
+    <div class="hobbies-container">
+        <div class="hobby-card">
+            <h3>🏏 Cricket</h3>
+            <p>Enjoy playing cricket with friends and following matches. It teaches teamwork and strategy.</p>
+        </div>
+        <div class="hobby-card">
+            <h3>💻 Coding </h3>
+            <p>Love to coding and to improve logic and problem-solving skills.</p>
+        </div>
+        <div class="hobby-card">
+            <h3>🎵 Listening to Music</h3>
+            <p>Listening to music helps me relax and stay creative. I enjoy a variety of genres depending on my mood.</p>
+        </div>
+    </div>
+</section>
+
+                <!-- Declaration Section -->
+<section id="declaration">
+    <h2 class="section-title">📝 Declaration</h2>
+    <div class="declaration-box">
+        <p>
+            I hereby declare that all the information presented in this portfolio is true to the best of my
+            knowledge and abilities. The projects, skills, and achievements mentioned here reflect my personal
+            work, learning journey, and interests as a first-year student.
+        </p>
+        <p>
+            This portfolio is created with the intention of showcasing my growth, enthusiasm for learning, and
+            commitment to improving my skills.
+        </p>
+        <div class="signature">
+            <img src="Signature_1.jpg" alt="Signature of Anuj Kumar Jha" class="signature-img">
+            <p><b>Signature:</b>Anuj Kumar Jha</p>
+            <p><b>Date:</b> 27-09-2025</p>
+        </div>
+    </div>
+</section>
+
+                <!-- Social Media Section -->
+                <section id="social">
+                    <h2 class="section-title">Connect With Me</h2>
+                    <p><b> LinkedIN :-</b>Anuj Kumar Jha <a
+                            href="https://www.linkedin.com/in/anuj-kumar-jha-b8a001384/"> See </a></p>
+                    <p><b> Twitter :-</b>Anuj Kumar Jha <a href="https://x.com/jhaanuj_45"> See </a></p>
+                    <p><b> Github :-</b>Anuj Kumar Jha <a href="https://github.com/anuj-263"> See </a></p>
+                     <p><b> Youtube :-</b>Anuj Kumar Jha <a
+                            href="https://www.youtube.com/channel/UCvhIdH4S51I55LqYcsoObfg">
+                            See</a>
+                    <p><b> Instagram :-</b>Anuj Kumar Jha <a
+                            href="https://www.instagram.com/ayushkumarjha_45/?igsh=YzljYTk1ODg3Zg%3D%3D#"> See </a></p>
+                    <p><b> Facebook :-</b>Anuj Kumar Jha <a
+                            href="https://www.facebook.com/people/Anuj-Kumar-Jha/pfbid02JvLLZGiBnN3qTqBViBX678Ppdho9DEdT5tmPcZevzyARvkKrd7UCJNGwvsfN57b2l/?mibextid=rS40aB7S9Ucbxw6v">
+                            See</a>
+                </section>
+
+        </section>
+        <section id="contact">
+            <h2 class="section-title">Contact Me</h2>
+            <form>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="3"></textarea>
+                </div>
+                <button type="submit">
+                    Send Message
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p style="font-size: 0.75rem;"> Thanks for visiting my portfolio!
+
+            Feel free to connect: jhaanuj263@gmail.com | LinkedIn | GitHub<br>
+            &copy; 2025 Anuj Kumar Jha | All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
