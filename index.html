@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <style>
+        /* ================= BASIC STYLES ================= */
         body {
             font-family: sans-serif;
             background-color: #121212;
@@ -30,6 +31,8 @@
             color: #E0E0E0;
             text-decoration: none;
             margin: 0 1rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
         }
 
         section {
@@ -63,14 +66,10 @@
 
         .hero-image {
             width: 150px;
-            /* Adjust size as needed */
             height: 150px;
             border-radius: 50%;
-            /* Makes the image a circle */
             object-fit: cover;
-            /* Ensures the image fills the space without distortion */
             border: 3px solid #0d9488;
-            /* Adds a nice border */
         }
 
         ul {
@@ -88,6 +87,13 @@
             border-radius: 0.25rem;
             width: 100%;
             max-width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+            color: #007bff;
+            transform: scale(1.05);
         }
 
         form {
@@ -119,41 +125,40 @@
             border-radius: 0.25rem;
             cursor: pointer;
         }
-        /* Hobbies / Interests Section */
-.hobbies-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    margin-top: 2rem;
-}
 
-.hobby-card {
-    background-color: #1a1a1a;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    width: 280px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+        .hobbies-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
 
-.hobby-card h3 {
-    color: #0d9488;
-    margin-bottom: 0.5rem;
-}
+        .hobby-card {
+            background-color: #1a1a1a;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            width: 280px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-.hobby-card p {
-    color: #E0E0E0;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
+        .hobby-card h3 {
+            color: #0d9488;
+            margin-bottom: 0.5rem;
+        }
 
-.hobby-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-}
+        .hobby-card p {
+            color: #E0E0E0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
 
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
 
         footer {
             background-color: #1a1a1a;
@@ -162,106 +167,131 @@
             color: #666;
         }
 
-        li:hover {
-            background-color: #f0f0f0;
-            /* Change background on hover */
-            color: #007bff;
-            /* Change text color on hover */
-            transform: scale(1.05);
-            /* Slight zoom effect */
-        }
-
         h2:hover,
         a:hover {
             background-color: grey;
-            /* Highlights text */
             transition: background-color 0.3s;
         }
+
         .signature-img {
-    width: 180px;       /* Adjust as needed */
-    height: auto;
-    margin-top: 0.5rem;
-    display: block;
-    
-}
+            width: 180px;
+            height: auto;
+            margin-top: 0.5rem;
+            display: block;
+        }
 
+        /* ================= MEDIA QUERIES ================= */
+        /* Tablets */
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                padding: 2rem 0;
+            }
+
+            nav a {
+                display: block;
+                margin: 0.25rem 0;
+            }
+
+            .hobbies-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .hero-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            h1 {
+                font-size: 2rem !important;
+            }
+
+            p {
+                font-size: 1rem !important;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+
+            .hero-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem !important;
+            }
+
+            ul li {
+                max-width: 100%;
+            }
+
+            form {
+                padding: 1rem;
+            }
+        }
     </style>
-
 </head>
 
 <body>
-
     <header>
         <nav>
             <a href="#about">About</a>
-            <a href="#education">Education </a>
+            <a href="#education">Education</a>
             <a href="#skills">Skills</a>
-            <a href="#experience">Experience </a>
+            <a href="#experience">Experience</a>
             <a href="#hobbies">Hobbies & Interests</a>
-            <a href="#declaration">Decleration</a>
+            <a href="#declaration">Declaration</a>
             <a href="#social">Connect With Me</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <main class="container">
-
+        <!-- HERO SECTION -->
         <section class="hero">
             <div class="hero-content">
                 <img src="Photo1.png" alt="A photo of the student developer" class="hero-image">
                 <div class="text-center">
-                    <h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">Hello, I'm A Student
-                        Developer.</h1>
-                    <p style="font-size: 1.125rem;">Welcome to my basic portfolio.</p>
+                    <h1>Hello, I'm A Student Developer.</h1>
+                    <p>Welcome to my basic portfolio.</p>
                 </div>
             </div>
         </section>
 
+        <!-- ABOUT SECTION -->
         <section id="about">
             <h2 class="section-title">About Me</h2>
             <div class="text-center">
-                <p style="margin-top: 1rem;">
-                    I am a first-year Electronics and Communication Engineering student at Future Institute of
-                    Engineering and Management (FIEM), Kolkata, driven by a strong passion for technology, web
-                    development, and creative innovation. With a foundation in HTML, CSS, JavaScript, and C programming,
-                    I thrive on building practical projects that bridge academic knowledge with real-world application.
-
-                    Currently, I am an active community member of Google Developer Group on Campus (FIEM), where I
-                    engage in workshops and collaborative opportunities to expand my technical and leadership skills. My
-                    journey includes the successful development of a responsive Amazon Home Page UI clone using HTML and
-                    CSS, focusing on pixel-perfect alignment, consistency, and responsive design best practices. I am
-                    always seeking to deepen my expertise by exploring frontend development, UI/UX fundamentals, and
-                    broader electronics concepts, alongside contributing to community-driven tech initiatives.
-
-                    Education has been the cornerstone of my growth, with a solid science background at Shree Maheshwari
-                    Vidyalaya and a distinction in artistic pursuits from Sarbabharatiya Sangeet-O-Sanskriti Parishad.
-                    My portfolio showcases my commitment to continuous learning and innovation, whether through solo
-                    projects or collaborative tech communities. I am enthusiastic about connecting with fellow
-                    developers, participating in open-source initiatives, and making a positive impact through
-                    technology.
-
-                    Let’s build, innovate, and inspire together as we shape solutions for tomorrow!
-                </p>
+                <p>I am a first-year Electronics and Communication Engineering student at Future Institute of Engineering and Management (FIEM), Kolkata. I am passionate about web development and technology. I have experience in HTML, CSS, JavaScript, and C programming, building practical projects and participating in community initiatives.</p>
             </div>
         </section>
+
+        <!-- EDUCATION SECTION -->
         <section id="education">
             <h2 class="section-title">Education</h2>
             <div class="text-center">
-                <p><b>PRIMARY EDUCATION :- </b> S.S PUBLIC SCHOOL <BR></p>
-                <p><b>SECONDARY EDUCATION :- </b> SHREE JAIN VIDYALAYA <BR>
-                    I have successfully completed my Secondary Education under the West Bengal Board of Secondary
-                    Education
-                    (WBBSE) from Shree Jain Vidyalaya</p>
-                <p><b>HIGHER SECONDARY EDUCATION :- </b> SHREE MAHESHWARI VIDYALAYA <BR>
-                    Successfully completed Higher Secondary Education (Class XII) under WBCHSE, building a strong
-                    academic
-                    foundation in Science. This achievement has prepared me to pursue higher studies and further
-                    professional growth</p>
-                <P> <b>Bachelor of Technology :-</b>Future Institute Of Engineering and Management <br>I am presently
-                    pursuing my Bachelor of Technology (B.Tech) in Electronics and Communication Engineering (ECE) at
-                    Future
-                    Institute of Engineering and Management (FIEM), Kolkata, as a first-year student.</P>
+                <p><b>Primary Education:</b> S.S Public School</p>
+                <p><b>Secondary Education:</b> Shree Jain Vidyalaya (WBBSE)</p>
+                <p><b>Higher Secondary Education:</b> Shree Maheshwari Vidyalaya (WBCHSE)</p>
+                <p><b>Bachelor of Technology:</b> Future Institute of Engineering and Management (ECE, First Year)</p>
+            </div>
         </section>
+
+        <!-- SKILLS SECTION -->
         <section id="skills">
             <h2 class="section-title">My Skills</h2>
             <div class="text-center">
@@ -275,76 +305,63 @@
                 </ul>
             </div>
         </section>
+
+        <!-- EXPERIENCE SECTION -->
         <section id="experience">
-            <h2 class="section-title">Expirience </h2>
+            <h2 class="section-title">Experience</h2>
             <div class="text-center">
-                <p><b>Title:-</b> Community Member </p>
-                <p><b>
-                        Company or organization:- </b> Google Developer Group on Campus Future Institute of Engineering
-                    and Management </p>
-                <i>
-                    Joined Google Developer Groups (GDG) on Campus – FIEM as a community member. Engaging in events,
-                    workshops, and collaborations to learn, share, and grow as an aspiring developer while connecting
-                    with peers and industry experts.
-                </i>
-               
-<section id="hobbies">
-    <h2 class="section-title">🎯 Hobbies & Interests</h2>
-    <div class="hobbies-container">
-        <div class="hobby-card">
-            <h3>🏏 Cricket</h3>
-            <p>Enjoy playing cricket with friends and following matches. It teaches teamwork and strategy.</p>
-        </div>
-        <div class="hobby-card">
-            <h3>💻 Coding </h3>
-            <p>Love to coding and to improve logic and problem-solving skills.</p>
-        </div>
-        <div class="hobby-card">
-            <h3>🎵 Listening to Music</h3>
-            <p>Listening to music helps me relax and stay creative. I enjoy a variety of genres depending on my mood.</p>
-        </div>
-    </div>
-</section>
-
-                <!-- Declaration Section -->
-<section id="declaration">
-    <h2 class="section-title">📝 Declaration</h2>
-    <div class="declaration-box">
-        <p>
-            I hereby declare that all the information presented in this portfolio is true to the best of my
-            knowledge and abilities. The projects, skills, and achievements mentioned here reflect my personal
-            work, learning journey, and interests as a first-year student.
-        </p>
-        <p>
-            This portfolio is created with the intention of showcasing my growth, enthusiasm for learning, and
-            commitment to improving my skills.
-        </p>
-        <div class="signature">
-            <img src="Signature_1.jpg" alt="Signature of Anuj Kumar Jha" class="signature-img">
-            <p><b>Signature:</b>Anuj Kumar Jha</p>
-            <p><b>Date:</b> 27-09-2025</p>
-        </div>
-    </div>
-</section>
-
-                <!-- Social Media Section -->
-                <section id="social">
-                    <h2 class="section-title">Connect With Me</h2>
-                    <p><b> LinkedIN :-</b>Anuj Kumar Jha <a
-                            href="https://www.linkedin.com/in/anuj-kumar-jha-b8a001384/"> See </a></p>
-                    <p><b> Twitter :-</b>Anuj Kumar Jha <a href="https://x.com/jhaanuj_45"> See </a></p>
-                    <p><b> Github :-</b>Anuj Kumar Jha <a href="https://github.com/anuj-263"> See </a></p>
-                     <p><b> Youtube :-</b>Anuj Kumar Jha <a
-                            href="https://www.youtube.com/channel/UCvhIdH4S51I55LqYcsoObfg">
-                            See</a>
-                    <p><b> Instagram :-</b>Anuj Kumar Jha <a
-                            href="https://www.instagram.com/ayushkumarjha_45/?igsh=YzljYTk1ODg3Zg%3D%3D#"> See </a></p>
-                    <p><b> Facebook :-</b>Anuj Kumar Jha <a
-                            href="https://www.facebook.com/people/Anuj-Kumar-Jha/pfbid02JvLLZGiBnN3qTqBViBX678Ppdho9DEdT5tmPcZevzyARvkKrd7UCJNGwvsfN57b2l/?mibextid=rS40aB7S9Ucbxw6v">
-                            See</a>
-                </section>
-
+                <p><b>Title:</b> Community Member</p>
+                <p><b>Organization:</b> Google Developer Group on Campus, FIEM</p>
+                <i>Participated in events, workshops, and collaborations to grow as a developer and connect with peers and industry experts.</i>
+            </div>
         </section>
+
+        <!-- HOBBIES SECTION -->
+        <section id="hobbies">
+            <h2 class="section-title">🎯 Hobbies & Interests</h2>
+            <div class="hobbies-container">
+                <div class="hobby-card">
+                    <h3>🏏 Cricket</h3>
+                    <p>Enjoy playing cricket with friends and following matches. It teaches teamwork and strategy.</p>
+                </div>
+                <div class="hobby-card">
+                    <h3>💻 Coding</h3>
+                    <p>Love coding and improving logic and problem-solving skills.</p>
+                </div>
+                <div class="hobby-card">
+                    <h3>🎵 Listening to Music</h3>
+                    <p>Music helps me relax and stay creative. I enjoy a variety of genres depending on my mood.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DECLARATION SECTION -->
+        <section id="declaration">
+            <h2 class="section-title">📝 Declaration</h2>
+            <div class="text-center">
+                <p>I hereby declare that all the information in this portfolio is true to the best of my knowledge.</p>
+                <div class="signature">
+                    <img src="Signature_1.jpg" alt="Signature of Anuj Kumar Jha" class="signature-img">
+                    <p><b>Signature:</b> Anuj Kumar Jha</p>
+                    <p><b>Date:</b> 27-09-2025</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOCIAL MEDIA SECTION -->
+        <section id="social">
+            <h2 class="section-title">Connect With Me</h2>
+            <div class="text-center">
+                <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/anuj-kumar-jha-b8a001384/">See</a></p>
+                <p><b>Twitter:</b> <a href="https://x.com/jhaanuj_45">See</a></p>
+                <p><b>GitHub:</b> <a href="https://github.com/anuj-263">See</a></p>
+                <p><b>YouTube:</b> <a href="https://www.youtube.com/channel/UCvhIdH4S51I55LqYcsoObfg">See</a></p>
+                <p><b>Instagram:</b> <a href="https://www.instagram.com/ayushkumarjha_45/">See</a></p>
+                <p><b>Facebook:</b> <a href="https://www.facebook.com/people/Anuj-Kumar-Jha/">See</a></p>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
         <section id="contact">
             <h2 class="section-title">Contact Me</h2>
             <form>
@@ -360,21 +377,15 @@
                     <label for="message">Message</label>
                     <textarea id="message" name="message" rows="3"></textarea>
                 </div>
-                <button type="submit">
-                    Send Message
-                </button>
+                <button type="submit">Send Message</button>
             </form>
         </section>
-
     </main>
 
     <footer>
-        <p style="font-size: 0.75rem;"> Thanks for visiting my portfolio!
-
-            Feel free to connect: jhaanuj263@gmail.com | LinkedIn | GitHub<br>
+        <p style="font-size: 0.75rem;">Thanks for visiting my portfolio! Feel free to connect: jhaanuj263@gmail.com | LinkedIn | GitHub<br>
             &copy; 2025 Anuj Kumar Jha | All rights reserved.</p>
     </footer>
-
 </body>
 
 </html>
