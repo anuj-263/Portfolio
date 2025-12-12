@@ -1,483 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        /* ================= BASIC STYLES ================= */
-        body {
-            font-family: sans-serif;
-            background-color: #121212;
-            color: #E0E0E0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        header {
-            background-color: #1a1a1a;
-            padding: 1rem 0;
-            text-align: center;
-        }
-
-        nav a {
-            color: #E0E0E0;
-            text-decoration: none;
-            margin: 0 1rem;
-            display: inline-block;
-            margin-bottom: 0.5rem;
-        }
-
-        section {
-            padding: 4rem 0;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .hero-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #0d9488;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        ul li {
-            background-color: #1a1a1a;
-            padding: 0.75rem 1rem;
-            border-radius: 0.25rem;
-            width: 100%;
-            max-width: 200px;
-            transition: all 0.3s ease;
-        }
-
-        li:hover {
-            background-color: #f0f0f0;
-            color: #007bff;
-            transform: scale(1.05);
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            background-color: #1a1a1a;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 0.5rem;
-            background-color: #2a2a2a;
-            color: #E0E0E0;
-            border: 1px solid #333;
-            border-radius: 0.25rem;
-        }
-
-        button {
-            background-color: #0d9488;
-            color: #ffffff;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 0.25rem;
-            cursor: pointer;
-        }
-
-        .hobbies-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .hobby-card {
-            background-color: #1a1a1a;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            width: 280px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .hobby-card h3 {
-            color: #0d9488;
-            margin-bottom: 0.5rem;
-        }
-
-        .hobby-card p {
-            color: #E0E0E0;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        .hobby-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        footer {
-            background-color: #1a1a1a;
-            padding: 1rem 0;
-            text-align: center;
-            color: #666;
-        }
-
-        h2:hover,
-        a:hover {
-            background-color: grey;
-            transition: background-color 0.3s;
-        }
-
-        .signature-img {
-            width: 180px;
-            height: auto;
-            margin-top: 0.5rem;
-            display: block;
-        }
-       /* ========= PROJECTS SECTION (simple & basic) ========= */
-
-.projects-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 2rem;
-    align-items: center;
-}
-
-.project-card {
-    background-color: #1a1a1a;
-    width: 100%;
-    max-width: 600px;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    transition: 0.3s ease;
-}
-
-.project-card h3 {
-    color: #0d9488;
-    margin-bottom: 0.5rem;
-}
-
-.project-card p {
-    color: #d0d0d0;
-    font-size: 0.95rem;
-    line-height: 1.45rem;
-    margin-bottom: 0.5rem;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.55);
-}
-
-.project-btn {
-    margin-top: 0.5rem;
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    background-color: #0d9488;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 0.3rem;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
-}
-
-.project-btn:hover {
-    background-color: #0b8277;
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-    .project-card {
-        width: 95%;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Portfolio of Anuj Kumar Jha — student developer. HTML, CSS, JS projects and contact." />
+  <title>My Portfolio — Anuj Kumar Jha</title>
+  <style>
+    /* ================= BASIC STYLES ================= */
+    :root{
+      --bg:#121212;
+      --panel:#1a1a1a;
+      --muted:#E0E0E0;
+      --muted-2:#d0d0d0;
+      --accent:#0d9488;
+      --card-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
-}
 
-        /* ================= MEDIA QUERIES ================= */
-        /* Tablets */
-        @media (max-width: 768px) {
-            .hero {
-                height: auto;
-                padding: 2rem 0;
-            }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background-color: var(--bg);
+      color: var(--muted);
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
-            nav a {
-                display: block;
-                margin: 0.25rem 0;
-            }
+    a{color:inherit}
+    a:focus{outline:2px dashed var(--accent); outline-offset:4px}
 
-            .hobbies-container {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
 
-            .hero-image {
-                width: 120px;
-                height: 120px;
-            }
+    header{
+      background-color: var(--panel);
+      padding: 1rem 0;
+      text-align: center;
+    }
 
-            .section-title {
-                font-size: 1.75rem;
-            }
+    /* Skip link for keyboard users */
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+    .skip-link:focus{
+      left:1rem;
+      top:1rem;
+      width:auto;
+      height:auto;
+      padding:0.5rem 0.75rem;
+      background:#fff;
+      color:#000;
+      z-index:9999;
+    }
 
-            h1 {
-                font-size: 2rem !important;
-            }
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:.5rem .75rem;
+      align-items:center;
+    }
 
-            p {
-                font-size: 1rem !important;
-            }
-        }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin: 0 0.25rem;
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius:4px;
+      font-size:0.95rem;
+    }
+    nav a:hover, nav a:focus{
+      background: rgba(13,148,136,0.06);
+      color: var(--accent);
+      transition: background-color .18s ease;
+    }
 
-        /* Mobile */
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 0.5rem;
-            }
+    section { padding: 3.25rem 0; }
 
-            .hero-image {
-                width: 100px;
-                height: 100px;
-            }
+    .text-center { text-align: center; }
 
-            .section-title {
-                font-size: 1.5rem;
-            }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+      color:var(--muted);
+    }
 
-            h1 {
-                font-size: 1.5rem !important;
-            }
+    /* HERO */
+    .hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+    }
 
-            ul li {
-                max-width: 100%;
-            }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
 
-            form {
-                padding: 1rem;
-            }
-        }
-    </style>
+    .hero-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: center;
+      margin: 0;
+    }
+
+    ul li {
+      background-color: var(--panel);
+      padding: 0.75rem 1rem;
+      border-radius: 0.25rem;
+      width: 100%;
+      max-width: 220px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.18s;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    /* improved hover that keeps dark theme */
+    ul li:hover {
+      background-color: rgba(13,148,136,0.04);
+      color: var(--muted);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.45);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background-color: var(--panel);
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    label{display:block; font-size:0.9rem; color:var(--muted-2); margin-bottom:0.25rem}
+    input, textarea, button, .project-btn {
+      font: inherit;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.5rem;
+      background-color: #222;
+      color: var(--muted);
+      border: 1px solid #333;
+      border-radius: 0.25rem;
+    }
+
+    button {
+      background-color: var(--accent);
+      color: #ffffff;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+    }
+
+    .hobbies-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .hobby-card {
+      background-color: var(--panel);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      width: 280px;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hobby-card h3 { color: var(--accent); margin-bottom: 0.5rem; }
+    .hobby-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.4; }
+
+    .hobby-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); }
+
+    footer {
+      background-color: var(--panel);
+      padding: 1rem 0;
+      text-align: center;
+      color: #999;
+    }
+
+    .signature-img { width: 180px; height: auto; margin-top: 0.5rem; display: block; }
+
+    /* ========= PROJECTS SECTION (simple & basic) ========= */
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+      align-items: center;
+    }
+
+    .project-card {
+      background-color: var(--panel);
+      width: 100%;
+      max-width: 720px;
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      text-align: left;
+      box-shadow: var(--card-shadow);
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+
+    .project-card h3 { color: var(--accent); margin: 0 0 0.5rem 0; font-size:1.05rem; }
+    .project-card p { color: var(--muted-2); font-size:0.95rem; line-height:1.45; margin:0 0 .5rem 0; }
+    .project-card .meta { color:#9ea; font-size:0.88rem; margin-bottom:0.5rem; }
+
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.55); }
+
+    .project-actions { display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap; }
+
+    .project-btn {
+      display:inline-block;
+      padding:.5rem .9rem;
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      border-radius:6px;
+      font-size:0.92rem;
+      border:none;
+    }
+    .project-btn:focus,.project-btn:hover{ background:#0b8277; }
+
+    /* small subtle link next to button */
+    .project-link{ color:#9fbfb5; text-decoration:none; font-size:0.9rem; }
+
+    /* ================= MEDIA QUERIES ================= */
+    @media (max-width: 768px) {
+      .hero { padding:2rem 0; min-height:unset }
+      nav{gap:.5rem}
+      .hero-image{ width:120px; height:120px }
+      .section-title{ font-size:1.75rem }
+      h1{ font-size:2rem }
+      p{ font-size:1rem }
+      .project-card{ padding:1rem }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 .5rem }
+      .hero-image { width:100px; height:100px }
+      .section-title { font-size:1.5rem }
+      h1{ font-size:1.5rem }
+      ul li{ max-width:100% }
+      form{ padding:1rem }
+      .project-card{ max-width:100%; text-align:left }
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#hobbies">Hobbies & Interests</a>
-            <a href="#declaration">Declaration</a>
-            <a href="#social">Connect With Me</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-    <main class="container">
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div class="hero-content">
-                <img src="Photo1.png" alt="A photo of the student developer" class="hero-image">
-                <div class="text-center">
-                    <h1>Hello, I'm A Student Developer.</h1>
-                    <p>Welcome to my basic portfolio.</p>
-                </div>
-            </div>
-        </section>
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="container" style="display:flex;justify-content:center;">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#hobbies">Hobbies &amp; Interests</a>
+        <a href="#declaration">Declaration</a>
+        <a href="#social">Connect</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-        <!-- ABOUT SECTION -->
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="text-center">
-                <p>I am a first-year Electronics and Communication Engineering student at Future Institute of Engineering and Management (FIEM), Kolkata. I am passionate about web development and technology. I have experience in HTML, CSS, JavaScript, and C programming, building practical projects and participating in community initiatives.</p>
-            </div>
-        </section>
-
-        <!-- EDUCATION SECTION -->
-        <section id="education">
-            <h2 class="section-title">Education</h2>
-            <div class="text-center">
-                <p><b>Primary Education:</b> S.S Public School</p>
-                <p><b>Secondary Education:</b> Shree Jain Vidyalaya (WBBSE)</p>
-                <p><b>Higher Secondary Education:</b> Shree Maheshwari Vidyalaya (WBCHSE)</p>
-                <p><b>Bachelor of Technology:</b> Future Institute of Engineering and Management (ECE, First Year)</p>
-            </div>
-        </section>
-
-        <!-- SKILLS SECTION -->
-        <section id="skills">
-            <h2 class="section-title">My Skills</h2>
-            <div class="text-center">
-                <ul>
-                    <li>Flex Box & Grid</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>C Programming</li>
-                    <li>C++</li>
-                    <li>Object-Oriented Programming</li>
-                </ul>
-            </div>
-        </section>
-       <!-- PROJECTS SECTION -->
-<section id="projects">
-    <h2 class="section-title">💼 My Projects</h2>
-
-    <div class="projects-container">
-
-        <!-- Project 1 -->
-        <div class="project-card">
-            <h3>🚍 KidShuttle – School Transport System</h3>
-            <p>A web platform designed for parents and schools to track student transport. I developed the complete frontend while my friend worked on the backend integrations.</p>
-            <p><b>My Contribution:</b> UI Design, Frontend Development (HTML, CSS)</p>
-            <a href="https://kidshuttle.infinityfree.me/?i=1" class="project-btn">View Project</a>
+  <main id="main" class="container">
+    <!-- HERO SECTION -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <img src="Photo1.png" alt="Photo of Anuj Kumar Jha" class="hero-image" loading="lazy">
+        <div class="text-center">
+          <h1 id="hero-heading">Hello, I'm A Student Developer.</h1>
+          <p>Welcome to my basic portfolio.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="section-title">About Me</h2>
+      <div class="text-center">
+        <p>I am a first-year Electronics and Communication Engineering student at Future Institute of Engineering and Management (FIEM), Kolkata. I am passionate about web development and technology. I have experience in HTML, CSS, JavaScript, and C programming, building practical projects and participating in community initiatives.</p>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" aria-labelledby="education-heading">
+      <h2 id="education-heading" class="section-title">Education</h2>
+      <div class="text-center">
+        <p><strong>Primary Education:</strong> S.S Public School</p>
+        <p><strong>Secondary Education:</strong> Shree Jain Vidyalaya (WBBSE)</p>
+        <p><strong>Higher Secondary Education:</strong> Shree Maheshwari Vidyalaya (WBCHSE)</p>
+        <p><strong>Bachelor of Technology:</strong> Future Institute of Engineering and Management (ECE, First Year)</p>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading" class="section-title">My Skills</h2>
+      <div class="text-center">
+        <ul aria-label="Skills list">
+          <li>Flex Box &amp; Grid</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>C Programming</li>
+          <li>C++</li>
+          <li>Object-Oriented Programming</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="section-title">💼 My Projects</h2>
+
+      <div class="projects-container">
+        <!-- Project 1 -->
+        <article class="project-card" aria-labelledby="p1">
+          <h3 id="p1">🚍 KidShuttle – School Transport System</h3>
+          <p>A web platform designed for parents and schools to track student transport. I developed the complete frontend while my friend worked on the backend integrations.</p>
+          <p class="meta"><strong>My Contribution:</strong> UI Design, Frontend Development (HTML, CSS, JS)</p>
+          <div class="project-actions">
+            <a class="project-btn" href="https://kidshuttle.infinityfree.me/?i=1" target="_blank" rel="noopener noreferrer">View Project</a>
+            <a class="project-link" href="#" target="_blank" rel="noopener noreferrer">• Backend / API</a>
+          </div>
+        </article>
 
         <!-- Project 2 -->
-        <div class="project-card">
-            <h3>🌐 Personal Portfolio Website</h3>
-            <p>A clean and minimal portfolio website showcasing my skills, education, hobbies, and projects. Fully built and designed by me using HTML & CSS.</p>
-            <p><b>Tech Stack:</b> HTML, CSS</p>
-            <a href="https://anuj-263.github.io/Portfolio/" class="project-btn">View Portfolio</a>
+        <article class="project-card" aria-labelledby="p2">
+          <h3 id="p2">🌐 Personal Portfolio Website</h3>
+          <p>A clean and minimal portfolio website showcasing my skills, education, hobbies, and projects. Fully built and designed by me using HTML &amp; CSS.</p>
+          <p class="meta"><strong>Tech Stack:</strong> HTML, CSS</p>
+          <div class="project-actions">
+            <a class="project-btn" href="https://anuj-263.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">View Portfolio</a>
+            <a class="project-link" href="https://github.com/anuj-263" target="_blank" rel="noopener noreferrer">• GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" aria-labelledby="exp-heading">
+      <h2 id="exp-heading" class="section-title">Experience</h2>
+      <div class="text-center">
+        <p><strong>Title:</strong> Owner</p>
+        <p><strong>Organization:</strong> Shaastrath Circle (YouTube Channel)</p>
+        <i>Created discussion-based educational videos<br>• Managed content and publishing<br>• Developed communication</i>
+      </div>
+    </section>
+
+    <!-- HOBBIES SECTION -->
+    <section id="hobbies" aria-labelledby="hobbies-heading">
+      <h2 id="hobbies-heading" class="section-title">🎯 Hobbies &amp; Interests</h2>
+      <div class="hobbies-container" role="list">
+        <div class="hobby-card" role="listitem">
+          <h3>🏏 Cricket</h3>
+          <p>Enjoy playing cricket with friends and following matches. It teaches teamwork and strategy.</p>
         </div>
+        <div class="hobby-card" role="listitem">
+          <h3>💻 Coding</h3>
+          <p>Love coding and improving logic and problem-solving skills.</p>
+        </div>
+        <div class="hobby-card" role="listitem">
+          <h3>🎵 Listening to Music</h3>
+          <p>Music helps me relax and stay creative. I enjoy a variety of genres depending on my mood.</p>
+        </div>
+      </div>
+    </section>
 
-    </div>
-</section>
+    <!-- DECLARATION SECTION -->
+    <section id="declaration" aria-labelledby="decl-heading">
+      <h2 id="decl-heading" class="section-title">📝 Declaration</h2>
+      <div class="text-center">
+        <p>I hereby declare that all the information in this portfolio is true to the best of my knowledge.</p>
+        <div class="signature">
+          <img src="Signature_1.jpg" alt="Signature of Anuj Kumar Jha" class="signature-img" loading="lazy">
+          <p><strong>Signature:</strong> Anuj Kumar Jha</p>
+          <p><strong>Date:</strong> 27-09-2025</p>
+        </div>
+      </div>
+    </section>
 
-        <!-- EXPERIENCE SECTION -->
-        <section id="experience">
-            <h2 class="section-title">Experience</h2>
-            <div class="text-center">
-                <p><b>Title:</b> Owner </p>
-                <p><b>Organization:</b> Shaastrath Circle (YouTube Channel)</p>
-                 <i>Created discussion-based educational videos<br>
-                    • Managed content, and publishing<br>
-                    • Developed communication</i><br>
-            </div>
-        </section>
+    <!-- SOCIAL MEDIA SECTION -->
+    <section id="social" aria-labelledby="social-heading">
+      <h2 id="social-heading" class="section-title">Connect With Me</h2>
+      <div class="text-center">
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/anuj-kumar-jha-b8a001384/" target="_blank" rel="noopener noreferrer">See</a></p>
+        <p><strong>Twitter:</strong> <a href="https://x.com/jhaanuj_45" target="_blank" rel="noopener noreferrer">See</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/anuj-263" target="_blank" rel="noopener noreferrer">See</a></p>
+        <p><strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCvhIdH4S51I55LqYcsoObfg" target="_blank" rel="noopener noreferrer">See</a></p>
+        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/ayushkumarjha05/" target="_blank" rel="noopener noreferrer">See</a></p>
+        <p><strong>Facebook:</strong> <a href="https://www.facebook.com/people/Anuj-Kumar-Jha/" target="_blank" rel="noopener noreferrer">See</a></p>
+      </div>
+    </section>
 
-        <!-- HOBBIES SECTION -->
-        <section id="hobbies">
-            <h2 class="section-title">🎯 Hobbies & Interests</h2>
-            <div class="hobbies-container">
-                <div class="hobby-card">
-                    <h3>🏏 Cricket</h3>
-                    <p>Enjoy playing cricket with friends and following matches. It teaches teamwork and strategy.</p>
-                </div>
-                <div class="hobby-card">
-                    <h3>💻 Coding</h3>
-                    <p>Love coding and improving logic and problem-solving skills.</p>
-                </div>
-                <div class="hobby-card">
-                    <h3>🎵 Listening to Music</h3>
-                    <p>Music helps me relax and stay creative. I enjoy a variety of genres depending on my mood.</p>
-                </div>
-            </div>
-        </section>
+    <!-- CONTACT SECTION -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="section-title">Contact Me</h2>
+      <form action="#" method="post" aria-label="Contact form">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
 
-        <!-- DECLARATION SECTION -->
-        <section id="declaration">
-            <h2 class="section-title">📝 Declaration</h2>
-            <div class="text-center">
-                <p>I hereby declare that all the information in this portfolio is true to the best of my knowledge.</p>
-                <div class="signature">
-                    <img src="Signature_1.jpg" alt="Signature of Anuj Kumar Jha" class="signature-img">
-                    <p><b>Signature:</b> Anuj Kumar Jha</p>
-                    <p><b>Date:</b> 27-09-2025</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SOCIAL MEDIA SECTION -->
-        <section id="social">
-            <h2 class="section-title">Connect With Me</h2>
-            <div class="text-center">
-                <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/anuj-kumar-jha-b8a001384/">See</a></p>
-                <p><b>Twitter:</b> <a href="https://x.com/jhaanuj_45">See</a></p>
-                <p><b>GitHub:</b> <a href="https://github.com/anuj-263">See</a></p>
-                <p><b>YouTube:</b> <a href="https://www.youtube.com/channel/UCvhIdH4S51I55LqYcsoObfg">See</a></p>
-                <p><b>Instagram:</b> <a href="https://www.instagram.com/ayushkumarjha05/">See</a></p>
-                <p><b>Facebook:</b> <a href="https://www.facebook.com/people/Anuj-Kumar-Jha/">See</a></p>
-            </div>
-        </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact">
-            <h2 class="section-title">Contact Me</h2>
-            <form>
-                <div>
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name">
-                </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
-                </div>
-                <div>
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="3"></textarea>
-                </div>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p style="font-size: 0.75rem;">Thanks for visiting my portfolio! Feel free to connect: jhaanuj263@gmail.com | LinkedIn | GitHub<br>
-            &copy; 2025 Anuj Kumar Jha | All rights reserved.</p>
-    </footer>
+  <footer>
+    <p style="font-size:0.85rem;">
+      Thanks for visiting my portfolio! Feel free to connect:
+      <a href="mailto:jhaanuj263@gmail.com">jhaanuj263@gmail.com</a> |
+      <a href="https://www.linkedin.com/in/anuj-kumar-jha-b8a001384/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+      <a href="https://github.com/anuj-263" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <br>&copy; 2025 Anuj Kumar Jha | All rights reserved.
+    </p>
+  </footer>
 </body>
-
 </html>
-
-
-
-
-
