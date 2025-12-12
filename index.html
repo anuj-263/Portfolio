@@ -5,41 +5,75 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Portfolio of Anuj Kumar Jha — student developer. HTML, CSS, JS projects and contact." />
   <title>My Portfolio — Anuj Kumar Jha</title>
-
   <style>
-    /* ================= BASIC STYLES ================= */
+    /* ================= BASIC THEME ================= */
     :root{
-      --bg:#121212;
-      --panel:#1a1a1a;
-      --muted:#E0E0E0;
-      --muted-2:#d0d0d0;
+      --bg:#0f0f10;
+      --panel:#141416;
+      --muted:#E6E6E6;
+      --muted-2:#cfcfcf;
       --accent:#0d9488;
-      --card-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      --accent-2:#0b8277;
+      --glass: rgba(255,255,255,0.02);
+      --card-shadow: 0 8px 28px rgba(0,0,0,0.55);
+      --radius: 10px;
+      --trans: 240ms cubic-bezier(.2,.9,.2,1);
     }
 
-    *{box-sizing:border-box;}
-    html,body{height:100%;}
+    /* Reset & accessibility */
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background-color: var(--bg);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(13,148,136,0.03), transparent 6%),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(13,148,136,0.02), transparent 6%),
+                  var(--bg);
       color: var(--muted);
       margin: 0;
       padding: 0;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      scroll-behavior: smooth;
     }
 
-    a{color:inherit; text-decoration:none;}
-    a:focus{outline:2px dashed var(--accent); outline-offset:4px;}
+    a{color:inherit}
+    a:focus{outline:3px solid rgba(13,148,136,0.15); outline-offset:4px}
 
     .container {
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 0 1rem;
     }
 
     header{
-      background-color: var(--panel);
-      padding: 1rem 0;
-      text-align: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      backdrop-filter: blur(4px);
+      padding: 0.9rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      border-bottom: 1px solid rgba(255,255,255,0.02);
+    }
+
+    /* Skip link for keyboard users */
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+    .skip-link:focus{
+      left:1rem;
+      top:1rem;
+      width:auto;
+      height:auto;
+      padding:0.5rem 0.75rem;
+      background:#fff;
+      color:#000;
+      z-index:9999;
+      border-radius:6px;
     }
 
     nav{
@@ -51,68 +85,66 @@
     }
 
     nav a {
-      padding: 0.25rem 0.5rem;
-      border-radius:4px;
+      color: var(--muted);
+      text-decoration: none;
+      margin: 0 0.25rem;
+      display: inline-block;
+      padding: 0.35rem 0.6rem;
+      border-radius:6px;
       font-size:0.95rem;
+      transition: color var(--trans), background var(--trans), transform var(--trans);
+      position: relative;
     }
-    nav a:hover{
+    nav a:hover, nav a:focus{
       background: rgba(13,148,136,0.06);
       color: var(--accent);
-      transition: 0.2s;
+      transform: translateY(-2px);
+    }
+    nav a.active {
+      color: white;
+      background: linear-gradient(90deg, rgba(13,148,136,0.14), rgba(11,130,119,0.08));
+      box-shadow: 0 6px 18px rgba(13,148,136,0.06);
     }
 
-    section { padding: 3rem 0; }
+    section { padding: 3.25rem 0; opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.9,.2,1); }
+    section.in-view { opacity: 1; transform: translateY(0); }
+
     .text-center { text-align: center; }
 
-    /* ================= SECTION TITLE HOVER ================= */
     .section-title {
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      color: var(--muted);
-      text-align:center;
-      display:inline-block;
-      position:relative;
-      cursor:pointer;
-      padding-bottom:4px;
-      transition:color .3s;
+      text-align: center;
+      color:var(--muted);
+      position: relative;
     }
-
     .section-title::after {
-      content:"";
-      position:absolute;
-      left:50%;
-      bottom:0;
-      width:0%;
-      height:3px;
-      background:var(--accent);
-      transform:translateX(-50%);
-      transition:0.35s ease;
-      border-radius:50px;
+      content: "";
+      display: block;
+      width: 56px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      margin: 12px auto 0;
+      border-radius: 6px;
+      opacity: 0.95;
     }
 
-    .section-title:hover{
-      color:var(--accent);
-    }
-    .section-title:hover::after{
-      width:65%;
-    }
-
-
-    /* ================= HERO ================= */
+    /* HERO */
     .hero {
-      min-height: 60vh;
+      min-height: 64vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem 0;
+      padding: 2.25rem 0;
+      gap: 1.25rem;
     }
 
     .hero-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
     .hero-image {
@@ -120,399 +152,436 @@
       height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--accent);
+      border: 3px solid rgba(13,148,136,0.18);
+      box-shadow: 0 10px 30px rgba(2,8,10,0.6);
+      transform-origin: center;
+      animation: float 6s ease-in-out infinite;
     }
 
-
-    /* ================= LIST ITEMS ================= */
-    ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      align-items: center;
+    @keyframes float {
+      0%{ transform: translateY(0px) rotate(0.0deg); }
+      50%{ transform: translateY(-8px) rotate(-1deg); }
+      100%{ transform: translateY(0px) rotate(0.0deg); }
     }
+
+    .hero h1 { font-size: 1.7rem; margin:0; letter-spacing:0.2px; color:var(--muted); }
+    .hero p { color:var(--muted-2); margin: 0.25rem 0 0 0; }
+
+    ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; align-items: center; margin: 0; }
 
     ul li {
-      background-color: var(--panel);
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
       padding: 0.75rem 1rem;
-      border-radius: 4px;
+      border-radius: 8px;
       width: 100%;
-      max-width: 220px;
-      transition: all 0.25s ease;
+      max-width: 240px;
+      transition: transform 220ms ease, box-shadow 220ms ease, background 220ms;
+      color:var(--muted);
       text-align:center;
+      border: 1px solid rgba(255,255,255,0.02);
+      backdrop-filter: blur(4px);
     }
 
     ul li:hover {
-      background-color: rgba(13,148,136,0.07);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.45);
+      background: linear-gradient(180deg, rgba(13,148,136,0.04), rgba(11,130,119,0.02));
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(2,8,10,0.6);
     }
 
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding: 1.25rem;
+      border-radius: 12px;
+      max-width: 520px;
+      margin: 0 auto;
+      border: 1px solid rgba(255,255,255,0.02);
+      box-shadow: 0 10px 30px rgba(2,8,10,0.45);
+    }
 
-    /* ================= PROJECT CARDS ================= */
+    label{display:block; font-size:0.9rem; color:var(--muted-2); margin-bottom:0.25rem}
+    input, textarea, button, .project-btn { font: inherit; }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.6rem;
+      background: rgba(0,0,0,0.45);
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.03);
+      border-radius: 8px;
+    }
+
+    button {
+      background: linear-gradient(90deg,var(--accent), var(--accent-2));
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    /* ripple effect */
+    button::after {
+      content: "";
+      position: absolute;
+      top: var(--y, 50%);
+      left: var(--x, 50%);
+      width: 4px;
+      height: 4px;
+      background: rgba(255,255,255,0.15);
+      transform: translate(-50%,-50%) scale(1);
+      opacity: 0;
+      border-radius: 50%;
+      transition: transform 650ms cubic-bezier(.2,.9,.2,1), opacity 220ms;
+    }
+    button.ripple::after {
+      transform: translate(-50%,-50%) scale(140);
+      opacity: 0.06;
+      transition: transform 650ms cubic-bezier(.2,.9,.2,1), opacity 650ms;
+    }
+
+    .hobbies-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .hobby-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border-radius: 12px;
+      padding: 1.25rem;
+      width: 260px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      text-align: center;
+      transition: transform var(--trans), box-shadow var(--trans);
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+
+    .hobby-card h3 { color: var(--accent); margin-bottom: 0.5rem; }
+    .hobby-card p { color: var(--muted-2); font-size: 0.95rem; line-height: 1.4; }
+
+    .hobby-card:hover { transform: translateY(-7px); box-shadow: var(--card-shadow); }
+
+    footer {
+      background: transparent;
+      padding: 1rem 0;
+      text-align: center;
+      color: #999;
+    }
+
+    .signature-img { width: 160px; height: auto; margin-top: 0.5rem; display: block; border-radius:6px; }
+
+    /* PROJECTS */
     .projects-container {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      align-items:center;
-      margin-top: 1rem;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+      align-items: center;
     }
 
     .project-card {
-      background-color: var(--panel);
-      width:100%;
-      max-width:720px;
-      padding:1.25rem;
-      border-radius:0.5rem;
-      box-shadow:var(--card-shadow);
-      transition:0.28s ease;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      width: 100%;
+      max-width: 760px;
+      padding: 1.2rem;
+      border-radius: 12px;
+      text-align: left;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.55);
+      transition: transform .28s ease, box-shadow .28s ease, border-color var(--trans);
+      border: 1px solid rgba(255,255,255,0.02);
     }
 
-    .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow:0 12px 32px rgba(0,0,0,0.55);
-    }
+    .project-card h3 { color: var(--accent); margin: 0 0 0.45rem 0; font-size:1.06rem; }
+    .project-card p { color: var(--muted-2); font-size:0.95rem; line-height:1.45; margin:0 0 .45rem 0; }
+    .project-card .meta { color:#9ea; font-size:0.88rem; margin-bottom:0.5rem; }
 
-    /* PROJECT TITLE HOVER */
-    .project-card h3{
-      color:var(--accent);
-      margin:0 0 0.5rem 0;
-      font-size:1.1rem;
-      position:relative;
+    .project-card:hover { transform: translateY(-8px); box-shadow: var(--card-shadow); border-color: rgba(13,148,136,0.06); }
+
+    .project-actions { display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap; }
+
+    .project-btn {
       display:inline-block;
-      cursor:pointer;
-      padding-bottom:3px;
-      transition:color .3s;
-    }
-
-    .project-card h3::after {
-      content:"";
-      position:absolute;
-      bottom:-2px;
-      left:50%;
-      width:0%;
-      height:2.5px;
-      background:var(--accent);
-      transform:translateX(-50%);
-      border-radius:50px;
-      transition:0.35s;
-    }
-
-    .project-card h3:hover {
-      color:var(--accent);
-    }
-    .project-card h3:hover::after {
-      width:55%;
-    }
-
-    .project-card p{
-      color:var(--muted-2);
-      line-height:1.45;
-      margin:0.25rem 0;
-    }
-
-    .project-actions{
-      margin-top:.5rem;
-      display:flex;
-      gap:.75rem;
-      flex-wrap:wrap;
-    }
-
-    .project-btn{
-      background:var(--accent);
-      color:#fff;
       padding:.5rem .9rem;
-      border-radius:6px;
-      text-decoration:none;
-      font-size:.92rem;
-      transition:0.25s;
-    }
-    .project-btn:hover{
-      background:#0b8277;
-    }
-
-    .project-link{
-      font-size:.9rem;
-      color:#9fbfb5;
-    }
-
-
-    /* ================= HOBBY CARDS ================= */
-    .hobbies-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap:2rem;
-      justify-content:center;
-      margin-top:2rem;
-    }
-
-    .hobby-card{
-      background-color:var(--panel);
-      width:280px;
-      padding:1.5rem;
-      border-radius:.5rem;
-      box-shadow:var(--card-shadow);
-      text-align:center;
-      transition:.3s;
-    }
-
-    .hobby-card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 8px 20px rgba(0,0,0,.5);
-    }
-
-
-    /* ================= CONTACT FORM ================= */
-    form {
-      background-color: var(--panel);
-      padding:1.25rem;
-      max-width:480px;
-      margin:0 auto;
-      border-radius:8px;
-      display:flex;
-      flex-direction:column;
-      gap:1rem;
-    }
-
-    label{color:var(--muted-2);}
-    input,textarea{
-      background:#222;
-      border:1px solid #333;
-      padding:.5rem;
-      border-radius:4px;
-      color:var(--muted);
-    }
-
-    button{
-      background:var(--accent);
+      background: linear-gradient(90deg,var(--accent), var(--accent-2));
       color:#fff;
+      text-decoration:none;
+      border-radius:8px;
+      font-size:0.92rem;
       border:none;
-      padding:.75rem;
-      border-radius:4px;
-      cursor:pointer;
+      transition: transform var(--trans);
+    }
+    .project-btn:hover{ transform: translateY(-3px); }
+
+    .project-link{ color:#9fbfb5; text-decoration:none; font-size:0.9rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero { padding:2rem 0; min-height:unset }
+      nav{gap:.5rem}
+      .hero-image{ width:120px; height:120px }
+      .section-title{ font-size:1.7rem }
+      .container { max-width: 720px; }
     }
 
-
-    /* ================= FOOTER ================= */
-    footer{
-      background:var(--panel);
-      color:#aaa;
-      text-align:center;
-      padding:1rem 0;
-      margin-top:2rem;
+    @media (max-width: 480px) {
+      .container { padding: 0 .6rem }
+      .hero-image { width:96px; height:96px }
+      .section-title { font-size:1.4rem }
+      h1{ font-size:1.3rem }
+      .project-card{ max-width:100%; text-align:left }
+      .hobby-card { width: 100%; max-width: 100%; }
     }
 
-
-    /* ================= MEDIA QUERIES ================= */
-    @media(max-width:768px){
-      .hero-image{width:120px;height:120px;}
-      .section-title{font-size:1.75rem;}
-      h1{font-size:2rem;}
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      section { transition: none; transform: none; opacity: 1; }
     }
-
-    @media(max-width:480px){
-      .container{padding:0 .5rem;}
-      .hero-image{width:100px;height:100px;}
-      .section-title{font-size:1.5rem;}
-    }
-
   </style>
 </head>
-
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <header>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#hobbies">Hobbies</a>
-      <a href="#declaration">Declaration</a>
-      <a href="#social">Connect</a>
-      <a href="#contact">Contact</a>
+    <nav aria-label="Main navigation">
+      <div class="container" style="display:flex;justify-content:center;">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#declaration">Declaration</a>
+        <a href="#social">Connect</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
   </header>
 
-
-  <main class="container">
-
-    <!-- HERO -->
-    <section class="hero">
+  <main id="main" class="container">
+    <!-- HERO SECTION -->
+    <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-content">
-        <img src="Photograph.png" alt="Anuj Kumar Jha" class="hero-image">
+        <img src="Photograph.png" alt="Photo of Anuj Kumar Jha" class="hero-image" loading="lazy">
         <div class="text-center">
-          <h1>Hello, I'm A Student Developer.</h1>
-          <p>Welcome to my basic portfolio.</p>
+          <h1 id="hero-heading">Hello, I'm A Student Developer.</h1>
+          <p>Welcome — I build frontend projects, including KidShuttle and this portfolio.</p>
         </div>
       </div>
     </section>
 
-
-    <!-- ABOUT -->
-    <section id="about">
-      <h2 class="section-title">About Me</h2>
+    <!-- ABOUT SECTION -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="section-title">About Me</h2>
       <div class="text-center">
-        <p>I am a first-year Electronics and Communication Engineering student at FIEM, Kolkata. Passionate about tech, web development, problem solving, and building useful projects.</p>
+        <p>I am a first-year Electronics and Communication Engineering student at Future Institute of Engineering and Management (FIEM), Kolkata. I enjoy web development, problem solving and learning new technologies.</p>
       </div>
     </section>
 
-
-    <!-- EDUCATION -->
-    <section id="education">
-      <h2 class="section-title">Education</h2>
+    <!-- EDUCATION SECTION -->
+    <section id="education" aria-labelledby="education-heading">
+      <h2 id="education-heading" class="section-title">Education</h2>
       <div class="text-center">
-        <p><b>Primary:</b> S.S Public School</p>
-        <p><b>Secondary:</b> Shree Jain Vidyalaya (WBBSE)</p>
-        <p><b>Higher Secondary:</b> Shree Maheshwari Vidyalaya (WBCHSE)</p>
-        <p><b>B.Tech:</b> FIEM, ECE (1st Year)</p>
+        <p><strong>Primary:</strong> S.S Public School</p>
+        <p><strong>Secondary:</strong> Shree Jain Vidyalaya (WBBSE)</p>
+        <p><strong>Higher Secondary:</strong> Shree Maheshwari Vidyalaya (WBCHSE)</p>
+        <p><strong>B.Tech:</strong> Future Institute of Engineering and Management (ECE, First Year)</p>
       </div>
     </section>
 
-
-    <!-- SKILLS -->
-    <section id="skills">
-      <h2 class="section-title">My Skills</h2>
-      <ul>
-        <li>Flexbox & Grid</li>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>C Programming</li>
-        <li>C++</li>
-        <li>OOP Concepts</li>
-      </ul>
+    <!-- SKILLS SECTION -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading" class="section-title">My Skills</h2>
+      <div class="text-center">
+        <ul aria-label="Skills list">
+          <li>Flexbox &amp; Grid</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>C / C++</li>
+          <li>OOP</li>
+        </ul>
+      </div>
     </section>
 
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h2 class="section-title">My Projects</h2>
+    <!-- PROJECTS SECTION -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="section-title">My Projects</h2>
 
       <div class="projects-container">
-
         <!-- Project 1 -->
-        <div class="project-card">
-          <h3>🚍 KidShuttle – School Transport System</h3>
-          <p>A web platform for parents & schools to track school transport. I built the entire frontend, while backend was handled by a friend.</p>
-          <p class="meta"><b>My Work:</b> UI Design, HTML, CSS, JS</p>
+        <article class="project-card" aria-labelledby="p1">
+          <h3 id="p1">🚍 KidShuttle – School Transport System</h3>
+          <p>A web platform designed for parents and schools to track student transport. I developed the complete frontend while my friend implemented backend APIs.</p>
+          <p class="meta"><strong>My Contribution:</strong> UI Design & Frontend (HTML, CSS, JS)</p>
           <div class="project-actions">
-            <a href="https://kidshuttle.infinityfree.me/?i=1" class="project-btn" target="_blank">View Project</a>
-            <a href="https://youtu.be/junn__ynV0o?si=J73x_RUgp8lBcIGm" class="project-link" target="_blank">• Youtube Demo</a>
+            <a class="project-btn" href="https://kidshuttle.infinityfree.me/?i=1" target="_blank" rel="noopener noreferrer">View Project</a>
+            <a class="project-link" href="https://youtu.be/junn__ynV0o?si=J73x_RUgp8lBcIGm" target="_blank" rel="noopener noreferrer">• YouTube Demo</a>
           </div>
-        </div>
+        </article>
 
         <!-- Project 2 -->
-        <div class="project-card">
-          <h3>🌐 Personal Portfolio Website</h3>
-          <p>A minimal portfolio website designed and fully developed by me using HTML & CSS.</p>
-          <p class="meta"><b>Tech:</b> HTML, CSS</p>
+        <article class="project-card" aria-labelledby="p2">
+          <h3 id="p2">🌐 Personal Portfolio Website</h3>
+          <p>A clean minimal portfolio showing my skills, education and projects — designed & built by me (this site).</p>
+          <p class="meta"><strong>Tech Stack:</strong> HTML, CSS</p>
           <div class="project-actions">
-            <a href="https://anuj-263.github.io/Portfolio/" class="project-btn" target="_blank">View Portfolio</a>
-            <a href="https://github.com/anuj-263" class="project-link" target="_blank">• GitHub</a>
+            <a class="project-btn" href="https://anuj-263.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">View Portfolio</a>
+            <a class="project-link" href="https://github.com/anuj-263" target="_blank" rel="noopener noreferrer">• GitHub</a>
           </div>
-        </div>
-
+        </article>
       </div>
     </section>
-
 
     <!-- EXPERIENCE -->
-    <section id="experience">
-      <h2 class="section-title">Experience</h2>
+    <section id="experience" aria-labelledby="exp-heading">
+      <h2 id="exp-heading" class="section-title">Experience</h2>
       <div class="text-center">
-        <p><b>Owner:</b> Shaastrath Circle (YouTube)</p>
-        <a class="project-link" href="https://www.youtube.com/@ShaastrathCircle" target="_blank">• Channel</a>
-        <p><i>Created educational videos, managed content, improved communication.</i></p>
+        <p><strong>Title:</strong> Owner — Shaastrath Circle (YouTube)</p>
+        <a class="project-link" href="https://www.youtube.com/@ShaastrathCircle" target="_blank" rel="noopener noreferrer">• Channel</a>
+        <i>Created discussion videos • Managed content • Built communication skills</i>
       </div>
     </section>
-
 
     <!-- HOBBIES -->
-    <section id="hobbies">
-      <h2 class="section-title">Hobbies & Interests</h2>
-
-      <div class="hobbies-container">
-        <div class="hobby-card">
-          <h3>🏏 Cricket</h3>
-          <p>Love playing cricket and following matches.</p>
-        </div>
-
-        <div class="hobby-card">
-          <h3>💻 Coding</h3>
-          <p>Passionate about building logic and solving problems.</p>
-        </div>
-
-        <div class="hobby-card">
-          <h3>🎵 Music</h3>
-          <p>Music helps me relax and boosts creativity.</p>
-        </div>
+    <section id="hobbies" aria-labelledby="hobbies-heading">
+      <h2 id="hobbies-heading" class="section-title">Hobbies & Interests</h2>
+      <div class="hobbies-container" role="list">
+        <div class="hobby-card" role="listitem"><h3>🏏 Cricket</h3><p>Playing & following matches — teamwork and strategy.</p></div>
+        <div class="hobby-card" role="listitem"><h3>💻 Coding</h3><p>Practice logic, build small projects and learn new libraries.</p></div>
+        <div class="hobby-card" role="listitem"><h3>🎵 Music</h3><p>Helps me relax and stay creative.</p></div>
       </div>
     </section>
-
 
     <!-- DECLARATION -->
-    <section id="declaration">
-      <h2 class="section-title">Declaration</h2>
+    <section id="declaration" aria-labelledby="decl-heading">
+      <h2 id="decl-heading" class="section-title">Declaration</h2>
       <div class="text-center">
-        <p>I hereby declare that all details provided above are true to the best of my knowledge.</p>
-        <img src="Signature_1.jpg" class="signature-img" alt="Signature">
-        <p><b>Signature:</b> Anuj Kumar Jha</p>
+        <p>I hereby declare that all the information in this portfolio is true to the best of my knowledge.</p>
+        <div class="signature">
+          <img src="Signature_1.jpg" alt="Signature of Anuj Kumar Jha" class="signature-img" loading="lazy">
+          <p><strong>Signature:</strong> Anuj Kumar Jha</p>
+          <p><strong>Date:</strong> 27-09-2025</p>
+        </div>
       </div>
     </section>
-
 
     <!-- SOCIAL -->
-    <section id="social">
-      <h2 class="section-title">Connect With Me</h2>
+    <section id="social" aria-labelledby="social-heading">
+      <h2 id="social-heading" class="section-title">Connect With Me</h2>
       <div class="text-center">
-        <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/anuj-kumar-jha-b8a001384/" target="_blank">See</a></p>
-        <p><b>Twitter:</b> <a href="https://x.com/jhaanuj_45" target="_blank">See</a></p>
-        <p><b>GitHub:</b> <a href="https://github.com/anuj-263" target="_blank">See</a></p>
-        <p><b>YouTube:</b> <a href="https://www.youtube.com/channel/UCvhIdH4S51I55LqYcsoObfg" target="_blank">See</a></p>
-        <p><b>Instagram:</b> <a href="https://www.instagram.com/ayushkumarjha05/" target="_blank">See</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/anuj-kumar-jha-b8a001384/" target="_blank" rel="noopener noreferrer">See</a></p>
+        <p><strong>Twitter:</strong> <a href="https://x.com/jhaanuj_45" target="_blank" rel="noopener noreferrer">See</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/anuj-263" target="_blank" rel="noopener noreferrer">See</a></p>
+        <p><strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCvhIdH4S51I55LqYcsoObfg" target="_blank" rel="noopener noreferrer">See</a></p>
+        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/ayushkumarjha05/" target="_blank" rel="noopener noreferrer">See</a></p>
+        <p><strong>Facebook:</strong> <a href="https://www.facebook.com/people/Anuj-Kumar-Jha/" target="_blank" rel="noopener noreferrer">See</a></p>
       </div>
     </section>
 
-
     <!-- CONTACT -->
-    <section id="contact">
-      <h2 class="section-title">Contact Me</h2>
-
-      <form>
-        <label>Name</label>
-        <input type="text" required>
-
-        <label>Email</label>
-        <input type="email" required>
-
-        <label>Message</label>
-        <textarea rows="4" required></textarea>
-
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="section-title">Contact Me</h2>
+      <form action="#" method="post" aria-label="Contact form">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
         <button type="submit">Send Message</button>
       </form>
     </section>
-
   </main>
 
-
-  <!-- FOOTER -->
   <footer>
-    <p>Thanks for visiting!  
-      <br>
-      <a href="mailto:jhaanuj263@gmail.com">jhaanuj263@gmail.com</a>
-      •
-      <a href="https://github.com/anuj-263" target="_blank">GitHub</a>
-      <br>
-      © 2025 Anuj Kumar Jha
+    <p style="font-size:0.85rem;">
+      Thanks for visiting my portfolio! Feel free to connect:
+      <a href="mailto:jhaanuj263@gmail.com">jhaanuj263@gmail.com</a> |
+      <a href="https://www.linkedin.com/in/anuj-kumar-jha-b8a001384/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+      <a href="https://github.com/anuj-263" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <br>&copy; 2025 Anuj Kumar Jha | All rights reserved.
     </p>
   </footer>
 
+  <script>
+    // Lightweight UI enhancements: reveal on scroll + active nav + button ripple
+    (function(){
+      // section reveal using IntersectionObserver
+      const sections = document.querySelectorAll('main section');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+            // mark nav link active
+            const id = e.target.id;
+            document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+          }
+        });
+      }, { threshold: 0.18 });
+
+      sections.forEach(s => io.observe(s));
+
+      // make nav links smooth (already CSS scroll-behavior: smooth) & close mobile if needed later
+      document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (ev) => {
+          // optional: small offset for sticky header
+          const target = document.querySelector(a.getAttribute('href'));
+          if (target) {
+            ev.preventDefault();
+            const y = target.getBoundingClientRect().top + window.scrollY - 12;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        });
+      });
+
+      // button ripple effect: calculate pointer position in button and animate pseudo via css var
+      document.addEventListener('pointerdown', function(e){
+        const btn = e.target.closest('button, .project-btn');
+        if (!btn) return;
+        // compute position inside button
+        const rect = btn.getBoundingClientRect();
+        const x = (e.clientX - rect.left) + 'px';
+        const y = (e.clientY - rect.top) + 'px';
+        btn.style.setProperty('--x', x);
+        btn.style.setProperty('--y', y);
+        btn.classList.remove('ripple');
+        // Force reflow to restart animation
+        // eslint-disable-next-line no-unused-expressions
+        void btn.offsetWidth;
+        btn.classList.add('ripple');
+        // remove after animation
+        setTimeout(() => btn.classList.remove('ripple'), 700);
+      });
+
+      // ensure first section is marked on load
+      window.addEventListener('load', () => {
+        const first = document.querySelector('main section');
+        if (first) first.classList.add('in-view');
+      });
+
+      // Accessibility: respect reduced motion (already in CSS); but also avoid animating if user prefers reduce
+      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (mq.matches) {
+        sections.forEach(s => s.classList.add('in-view'));
+      }
+    })();
+  </script>
 </body>
 </html>
-
 
 
 
