@@ -179,6 +179,66 @@
             margin-top: 0.5rem;
             display: block;
         }
+       /* ========= PROJECTS SECTION (simple & basic) ========= */
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.project-card {
+    background-color: #1a1a1a;
+    width: 100%;
+    max-width: 600px;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: 0.3s ease;
+}
+
+.project-card h3 {
+    color: #0d9488;
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    color: #d0d0d0;
+    font-size: 0.95rem;
+    line-height: 1.45rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.55);
+}
+
+.project-btn {
+    margin-top: 0.5rem;
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: #0d9488;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.project-btn:hover {
+    background-color: #0b8277;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .project-card {
+        width: 95%;
+    }
+}
 
         /* ================= MEDIA QUERIES ================= */
         /* Tablets */
@@ -252,6 +312,7 @@
             <a href="#about">About</a>
             <a href="#education">Education</a>
             <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
             <a href="#experience">Experience</a>
             <a href="#hobbies">Hobbies & Interests</a>
             <a href="#declaration">Declaration</a>
@@ -305,6 +366,30 @@
                 </ul>
             </div>
         </section>
+       <!-- PROJECTS SECTION -->
+<section id="projects">
+    <h2 class="section-title">💼 My Projects</h2>
+
+    <div class="projects-container">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+            <h3>🚍 KidShuttle – School Transport System</h3>
+            <p>A web platform designed for parents and schools to track student transport. I developed the complete frontend while my friend worked on the backend integrations.</p>
+            <p><b>My Contribution:</b> UI Design, Frontend Development (HTML, CSS)</p>
+            <a href="https://kidshuttle.infinityfree.me/?i=1" class="project-btn">View Project</a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+            <h3>🌐 Personal Portfolio Website</h3>
+            <p>A clean and minimal portfolio website showcasing my skills, education, hobbies, and projects. Fully built and designed by me using HTML & CSS.</p>
+            <p><b>Tech Stack:</b> HTML, CSS</p>
+            <a href="https://anuj-263.github.io/Portfolio/" class="project-btn">View Portfolio</a>
+        </div>
+
+    </div>
+</section>
 
         <!-- EXPERIENCE SECTION -->
         <section id="experience">
@@ -391,6 +476,8 @@
 </body>
 
 </html>
+
+
 
 
 
